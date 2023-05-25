@@ -15,3 +15,6 @@ Throughout this project, code samples, data preprocessing techniques, dimensiona
 The repository also includes a detailed documentation, explaining the project's objectives, methodology, and results, along with relevant visualizations and performance metrics. By leveraging the power of Random Forest and dimensionality reduction techniques, this project offers valuable knowledge and resources for tackling event data classification challenges.
 
 The Kaggle Challenge is available in the following link https://www.kaggle.com/competitions/smemi309-final-evaluation-challenge-2022
+
+## Contributing:
+Contributions to this project are highly encouraged and welcome. If you are interested in further enhancing the capabilities of event data classification, there are several areas where you can make valuable contributions. One possible area of contribution is to consider the raw data as time series and handle the problem as a multivariate time series classification.
