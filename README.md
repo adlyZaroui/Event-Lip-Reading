@@ -28,7 +28,7 @@ Event Data are DataFrames, with each row representing an event, sorted in ascend
 
 The primary goal of this project is to address the following problem:
 
-> **Problem**: We have 10 distinct classes, each with 32 examples. Our goal is to construct a classifier that can accurately determine the class of a new, unseen example.
+> **Problem**: Given 10 distinct classes, each with 32 examples. Our goal is to construct a classifier that can accurately determine the class of a new, unseen example.
 
 This problem is the central focus of our project and all subsequent work will be aimed at solving it.
 
