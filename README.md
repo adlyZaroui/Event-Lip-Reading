@@ -14,7 +14,7 @@ An event is a 4-tupe $(x,y,p,t)$ where
 
 - $(x,y)$ denotes the pixel's position associated with the event.
 - $p$ is a boolen indicating wether the change in luminosity is increasing or decreasing.
-- $t$ represents the timestamp (in $\mu$  μs) from the start of the recording.
+- $t$ represents the timestamp (in $\mu s$) from the start of the recording.
 
 Event Data are DataFrames, with each row representing an event, sorted in ascending order *w.r.t.* the timestamp.
 
