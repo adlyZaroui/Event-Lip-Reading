@@ -20,7 +20,15 @@ An event is a $4$-tupe $(x,y,p,t)$ where
 
 Event Data are DataFrames, with each row representing an event, sorted in ascending order *w.r.t.* the timestamp.
 
-**Problem**: We have 10 distinct classes, each with 32 examples. Our goal is to construct a classifier that can accurately determine the class of a new, unseen example.
+<br>
+
+## Project Objective
+
+The primary goal of this project is to address the following problem:
+
+> **Problem**: We have 10 distinct classes, each with 32 examples. Our goal is to construct a classifier that can accurately determine the class of a new, unseen example.
+
+This problem is the central focus of our project and all subsequent work will be aimed at solving it.
 
 <br>
 
