@@ -32,16 +32,16 @@ This folder houses another folder also titled `train10`, which in turn contains 
     local_repo/
     ├──── train10/
     │       ├── train10/
-    │         ├── Addition/
-    │         ├── Carnaval/
-    │         ├── Decider/
-    │         ├── Ecole/
-    │         ├── Fillette/
-    │         ├── Huitre/
-    │         ├── Joyeux/
-    │         ├── Musique/
-    │         ├── Pyjama/
-    │         └── Ruisseau/
+    │             ├── Addition/
+    │             ├── Carnaval/
+    │             ├── Decider/
+    │             ├── Ecole/
+    │             ├── Fillette/
+    │             ├── Huitre/
+    │             ├── Joyeux/
+    │             ├── Musique/
+    │             ├── Pyjama/
+    │             └── Ruisseau/
     ├──── .venv/
     ├──── .gitignore
     ├──── .LICENSE
