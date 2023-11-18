@@ -20,6 +20,8 @@ An event is a $4$-tupe $(x,y,p,t)$ where
 
 Event Data are DataFrames, with each row representing an event, sorted in ascending order *w.r.t.* the timestamp.
 
+> **Note**: In our unique hardware configuration provided by the manufacturer, the range of $x$ is from $0$ to $480$, $y$ varies from $0$ to $640$, $p$ can be either $0$ (decrease of luminosity) or $1$ (increase of luminosity), and $t$ is a floating-point number.
+
 <br>
 
 ## Project Objective
