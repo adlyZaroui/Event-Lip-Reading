@@ -1,8 +1,12 @@
 # &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Event Data Classification
 
+<br>
+
 This GitHub repository showcases an academic project that focuses on classifying event data obtained from an event-based sensor, also known as a neuromorphic sensor. The event data, provided by [Prophesee](https://www.prophesee.ai), holds valuable insights that can be utilized across various domains.
 
 Please note that the data used for this project will not be published in this repository due to ownership rights. However, the same dataset can be accessed and downloaded by anyone interested from the following Kaggle link: [Kaggle Dataset](https://www.kaggle.com/competitions/smemi309-final-evaluation-challenge-2022/data).
+
+<br>
 
 ## Introduction
 
@@ -19,6 +23,8 @@ Here is an illustration of the said data type, transformed into a format akin to
 <p align="center">
   <img src="figures/readme_animation.gif" />
 </p>
+
+<br>
 
 ## Usage
 
@@ -74,6 +80,8 @@ Further details about the methodology employed to record this dataset can be fou
 
 5. **Notebook**: You can now execute the Notebook `temporary.ipynb` in Jupyter or watherver notebook server you prefer (vscode, google colab, ...)
 
+<br>
+
 ## Overall
 
 The project starts with preprocessing the raw event data by converting it into pixel matrices, leveraging the inherent structure and characteristics of the data. This conversion enables the utilization of conventional image processing methods.
@@ -89,6 +97,8 @@ Throughout this project, code samples, data preprocessing techniques, dimensiona
 The repository also includes a detailed documentation, explaining the project's objectives, methodology, and results, along with relevant visualizations and performance metrics. By leveraging the power of Random Forest and dimensionality reduction techniques, this project offers valuable knowledge and resources for tackling event data classification challenges.
 
 The Kaggle Challenge is available in the following link https://www.kaggle.com/competitions/smemi309-final-evaluation-challenge-2022
+
+<br>
 
 ## Contributing:
 Contributions to this project are highly encouraged and welcome. If you are interested in further enhancing the capabilities of event data classification, there are several areas where you can make valuable contributions. One possible area of contribution is to consider the raw data as time series and handle the problem as a multivariate time series classification.
