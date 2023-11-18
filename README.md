@@ -18,3 +18,6 @@ The Kaggle Challenge is available in the following link https://www.kaggle.com/c
 
 ## Contributing:
 Contributions to this project are highly encouraged and welcome. If you are interested in further enhancing the capabilities of event data classification, there are several areas where you can make valuable contributions. One possible area of contribution is to consider the raw data as time series and handle the problem as a multivariate time series classification.
+
+
+a
