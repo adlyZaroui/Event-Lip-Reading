@@ -70,7 +70,9 @@ Further details about the methodology employed to record this dataset can be fou
 
 ## Overall
 
-![Animation](animation.gif)
+<p align="center">
+  <img src="animation.gif" />
+</p>
 
 The project starts with preprocessing the raw event data by converting it into pixel matrices, leveraging the inherent structure and characteristics of the data. This conversion enables the utilization of conventional image processing methods.
 
