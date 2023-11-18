@@ -20,7 +20,13 @@ An event is a $4$-tupe $(x,y,p,t)$ where
 
 Event Data are DataFrames, with each row representing an event, sorted in ascending order *w.r.t.* the timestamp.
 
-Here is an illustration of the said data type, transformed into a format akin to video data:
+**Problem**: We have 10 distinct classes, each with 32 examples. Our goal is to construct a classifier that can accurately determine the class of a new, unseen example.
+
+<br>
+
+## Illustration
+
+This illustration represents the mentioned data type, which has been converted into a format similar to video data. In this format, events with polarity $0$ and polarity $1$ are distinguished by different color maps:
 
 <p align="center">
   <img src="figures/readme_animation.gif" />
