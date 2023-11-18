@@ -8,11 +8,11 @@ Please note that the data used for this project will not be published in this re
 
 An event is a 4-tupe $(x,y,p,t)$ where
 
-- $(x,y)$ represents the position of the pixel concerned by the event.
-- $p$ is a boolen wether the change in luminosity is increasing or decreasing.
-- $t$ represents the timestamp (in $\mu$s) since begining of the record.
+- $(x,y)$ denotes the pixel's position associated with the event.
+- $p$ is a boolen indicating wether the change in luminosity is increasing or decreasing.
+- $t$ represents the timestamp (in $\mu$s) from the start of the recording.
 
-Event Data are DataFrames where each row is an event, increasingly, *w.r.t.* timestamp.
+Event Data are DataFrames, with each row representing an event, sorted in ascending order *w.r.t.* the timestamp.
 
 ## Usage
 
@@ -24,33 +24,35 @@ To use this project, follow these steps:
     git clone https://github.com/adlyZaroui/Event-camera-classification.git
     ```
 
-2. **Download the dataset**: The dataset can be downloaded from [this Kaggle link](https://www.kaggle.com/competitions/smemi309-final-evaluation-challenge-2022/data). Look for the folder named `train10` and download it. After downloading, place it in the `root` of your local repo.
+2. **Download the dataset**: You can download the dataset from [this Kaggle link](https://www.kaggle.com/competitions/smemi309-final-evaluation-challenge-2022/data).
+Search for the `train10` folder and download it. Once downloaded, position it in the root directory of your local repository.
+This folder houses another folder also titled `train10`, which in turn contains 10 subfolders. Ultimately, it should appear as follows:
 
-This folder contains a folder also named `train10`, which contains 10 folders, at the end, it would looks like 
+    ```bash
+    local_repo/
+    ├──── train10/
+    │       ├── train10/
+    │         ├── Addition/
+    │         ├── Carnaval/
+    │         ├── Decider/
+    │         ├── Ecole/
+    │         ├── Fillette/
+    │         ├── Huitre/
+    │         ├── Joyeux/
+    │         ├── Musique/
+    │         ├── Pyjama/
+    │         └── Ruisseau/
+    ├──── .venv/
+    ├──── .gitignore
+    ├──── .LICENSE
+    ├──── ...
+    └──── *.ipynb
 
-```bash
-local_repo/
-├──── train10/
-│       ├── train10/
-│         ├── Addition/
-│         ├── Carnaval/
-│         ├── Decider/
-│         ├── Ecole/
-│         ├── Fillette/
-│         ├── Huitre/
-│         ├── Joyeux/
-│         ├── Musique/
-│         ├── Pyjama/
-│         └── Ruisseau/
-├──── .venv/
-├──── .gitignore
-├──── .LICENSE
-└──── *.ipynb
-```
+    ```
 
-Each one of the folder in `train10/train10/` contains 32 csv files named from `0.csv` to `31.csv`, representing event data centered around the face of someone speaking, saying the specific word that is the parent folder name. (ex: in `train10/train10/Musique`, there is 32 csv files that are event data of someone saying the french world *Musique*).
+Every folder within `train10/train10/` holds 32 csv files, named from `0.csv` to `31.csv`. These files represent event data focused on the face of a speaker uttering a specific word, which is also the name of the parent folder. For instance, the folder `train10/train10/Musique` contains 32 csv files, each capturing event data of someone pronouncing the French word *Musique*.
 
-More details can be find regarding the methodology used to record this dataset in the Kaggle Competiton link.
+Further details about the methodology employed to record this dataset can be found at the provided [Kaggle Competition link](https://www.kaggle.com/competitions/smemi309-final-evaluation-challenge-2022/data).
 
 3. **Install dependencies**: This project requires certain Python libraries. You can install them using pip:
 
