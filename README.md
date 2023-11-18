@@ -2,7 +2,9 @@
 
 <br>
 
-This GitHub repository showcases an academic project that focuses on classifying event data obtained from an event-based sensor, also known as a neuromorphic sensor. The event data, provided by [Prophesee](https://www.prophesee.ai), holds valuable insights that can be utilized across various domains.
+This GitHub repository showcases an academic project that focuses on classifying event data obtained from an event-based sensor - [Event Camera], also known as a neuromorphic sensor. The event data, provided by [Prophesee](https://www.prophesee.ai), holds valuable insights that can be utilized across various domains.
+
+[Event Camera]: https://en.wikipedia.org/wiki/Event_camera
 
 Please note that the data used for this project will not be published in this repository due to ownership rights. However, the same dataset can be accessed and downloaded by anyone interested from the following Kaggle link: [Kaggle Dataset](https://www.kaggle.com/competitions/smemi309-final-evaluation-challenge-2022/data).
 
@@ -102,3 +104,9 @@ The Kaggle Challenge is available in the following link https://www.kaggle.com/c
 
 ## Contributing:
 Contributions to this project are highly encouraged and welcome. If you are interested in further enhancing the capabilities of event data classification, there are several areas where you can make valuable contributions. One possible area of contribution is to consider the raw data as time series and handle the problem as a multivariate time series classification.
+
+<br>
+
+## License
+
+This project is open source, under the terms of the [MIT License](https://opensource.org/licenses/MIT).
