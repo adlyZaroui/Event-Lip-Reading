@@ -10,7 +10,7 @@ Please note that the data used for this project will not be published in this re
 
 ## Introduction
 
-An event is a 4-tupe $(x,y,p,t)$ where
+An event is a $4$-tupe $(x,y,p,t)$ where
 
 - $(x,y)$ denotes the pixel's position associated with the event.
 - $p$ is a boolen indicating wether the change in luminosity is increasing or decreasing.
