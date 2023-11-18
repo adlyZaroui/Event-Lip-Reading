@@ -30,22 +30,22 @@ This folder contains a folder also named `train10`, which contains 10 folders, a
 
 ```bash
 local_repo/
-├ ─----- train10/
-│        ├── train10/
-│          ├── Addition/
-│          ├── Carnaval/
-│          ├── Decider/
-│          ├── Ecole/
-│          ├── Fillette/
-│          ├── Huitre/
-│          ├── Joyeux/
-│          ├── Musique/
-│          ├── Pyjama/
-│          └── Ruisseau/
-├──-- .venv/
-├──-- .gitignore
-├──-- .LICENSE
-└──-- *.ipynb
+├──── train10/
+│       ├── train10/
+│         ├── Addition/
+│         ├── Carnaval/
+│         ├── Decider/
+│         ├── Ecole/
+│         ├── Fillette/
+│         ├── Huitre/
+│         ├── Joyeux/
+│         ├── Musique/
+│         ├── Pyjama/
+│         └── Ruisseau/
+├──── .venv/
+├──── .gitignore
+├──── .LICENSE
+└──── *.ipynb
 ```
 
 Each one of the folder in `train10/train10/` contains 32 csv files named from `0.csv` to `31.csv`, representing event data centered around the face of someone speaking, saying the specific word that is the parent folder name. (ex: in `train10/train10/Musique`, there is 32 csv files that are event data of someone saying the french world *Musique*).
