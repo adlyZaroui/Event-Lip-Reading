@@ -60,6 +60,14 @@ Further details about the methodology employed to record this dataset can be fou
     pip install -r requirements.txt
     ```
 
+4. **Virtual Environment**: You can now enable the virtual environment by typing
+    
+    ```bash
+    source .venv/bin/activate
+    ```
+
+5. **Notebook**: You can now execute the Notebook `temporary.ipynb` in Jupyter or watherver notebook server you prefer (vscode, google colab, ...)
+
 
 The project starts with preprocessing the raw event data by converting it into pixel matrices, leveraging the inherent structure and characteristics of the data. This conversion enables the utilization of conventional image processing methods.
 
