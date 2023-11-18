@@ -70,6 +70,8 @@ Further details about the methodology employed to record this dataset can be fou
 
 ## Overall
 
+![Animation](animation.gif)
+
 The project starts with preprocessing the raw event data by converting it into pixel matrices, leveraging the inherent structure and characteristics of the data. This conversion enables the utilization of conventional image processing methods.
 
 To handle high-dimensional data effectively, dimensionality reduction is employed using Principal Component Analysis (PCA). By reducing the dimensionality of the data while preserving relevant information, PCA allows for efficient computation and improved model performance.
