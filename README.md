@@ -14,6 +14,12 @@ An event is a 4-tupe $(x,y,p,t)$ where
 
 Event Data are DataFrames, with each row representing an event, sorted in ascending order *w.r.t.* the timestamp.
 
+Here is an illustration of the said data type, transformed into a format akin to video data:
+
+<p align="center">
+  <img src="animation.gif" />
+</p>
+
 ## Usage
 
 To use this project, follow these steps:
@@ -69,10 +75,6 @@ Further details about the methodology employed to record this dataset can be fou
 5. **Notebook**: You can now execute the Notebook `temporary.ipynb` in Jupyter or watherver notebook server you prefer (vscode, google colab, ...)
 
 ## Overall
-
-<p align="center">
-  <img src="animation.gif" />
-</p>
 
 The project starts with preprocessing the raw event data by converting it into pixel matrices, leveraging the inherent structure and characteristics of the data. This conversion enables the utilization of conventional image processing methods.
 
