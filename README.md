@@ -128,4 +128,4 @@ Contributions to this project are highly encouraged and welcome. If you are inte
 
 ## License
 
-This project is open source, under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+This project is open source, under the terms of the [MIT License](LICENSE).
