@@ -28,8 +28,9 @@ Event Data are DataFrames, with each row representing an event, sorted in ascend
 
 The primary goal of this project is to address the following problem:
 
-> **Problem**: Given 10 distinct classes, each with 32 examples. Our goal is to construct a classifier that can accurately determine the class of a new, unseen example.
+> **Problem**: Given 10 distinct classes, each with 32 examples, our goal is to construct a classifier that can accurately determine the class of a new, unseen example.
 
+The main *metric* that will be used to assess the performance of the models is *accuracy*.\
 This problem is the central focus of our project and all subsequent work will be aimed at solving it.
 
 <br>
@@ -37,6 +38,8 @@ This problem is the central focus of our project and all subsequent work will be
 ## Illustration
 
 This illustration represents the mentioned data type, which has been converted into a format similar to video data. In this format, events with polarity $0$ and polarity $1$ are distinguished by different color maps:
+
+<br>
 
 <p align="center">
   <img src="figures/readme_animation.gif" />
