@@ -17,7 +17,7 @@ Event Data are DataFrames, with each row representing an event, sorted in ascend
 Here is an illustration of the said data type, transformed into a format akin to video data:
 
 <p align="center">
-  <img src="animation.gif" />
+  <img src="figures/readme_animation.gif" />
 </p>
 
 ## Usage
