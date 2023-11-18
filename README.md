@@ -18,28 +18,45 @@ Event Data are DataFrames where each row is an event, increasingly, *w.r.t.* tim
 
 To use this project, follow these steps:
 
-1. **Clone the repository**: First, clone this repository to your local machine using `git clone https://github.com/adlyZaroui/Event-camera-classification.git`.
+1. **Clone the repository**: First, clone this repository to your local machine using
 
-2. **Download the dataset**: The dataset can be downloaded from [this Kaggle link](https://www.kaggle.com/competitions/smemi309-final-evaluation-challenge-2022/data). Look for the folder named `train10` and download it. After downloading, place the dataset in the `root` of your local repo.
+    ```bash
+    git clone https://github.com/adlyZaroui/Event-camera-classification.git
+    ```
+
+2. **Download the dataset**: The dataset can be downloaded from [this Kaggle link](https://www.kaggle.com/competitions/smemi309-final-evaluation-challenge-2022/data). Look for the folder named `train10` and download it. After downloading, place it in the `root` of your local repo.
+
+This folder contains a folder also named `train10`, which contains 10 folders, at the end, it would looks like 
+
+```bash
+local_repo/
+├ ─----- train10/
+│        ├── train10/
+│          ├── Addition/
+│          ├── Carnaval/
+│          ├── Decider/
+│          ├── Ecole/
+│          ├── Fillette/
+│          ├── Huitre/
+│          ├── Joyeux/
+│          ├── Musique/
+│          ├── Pyjama/
+│          └── Ruisseau/
+├──-- .venv/
+├──-- .gitignore
+├──-- .LICENSE
+└──-- *.ipynb
+```
+
+Each one of the folder in `train10/train10/` contains 32 csv files named from `0.csv` to `31.csv`, representing event data centered around the face of someone speaking, saying the specific word that is the parent folder name. (ex: in `train10/train10/Musique`, there is 32 csv files that are event data of someone saying the french world *Musique*).
+
+More details can be find regarding the methodology used to record this dataset in the Kaggle Competiton link.
 
 3. **Install dependencies**: This project requires certain Python libraries. You can install them using pip:
 
     ```bash
     pip install -r requirements.txt
     ```
-
-4. **Download the dataset**: The dataset can be downloaded from [this Kaggle link](https://www.kaggle.com/competitions/smemi309-final-evaluation-challenge-2022/data). After downloading, place the dataset in the `data/` directory in the project root.
-
-5. **Run the scripts**: The main scripts for this project are located in the `src/` directory. You can run them using Python:
-
-    ```bash
-    python src/script_name.py
-    ```
-
-    Replace `script_name.py` with the name of the script you want to run.
-
-Please note that these steps assume you have Python and pip installed on your machine. If not, you will need to install them first.
-
 
 
 The project starts with preprocessing the raw event data by converting it into pixel matrices, leveraging the inherent structure and characteristics of the data. This conversion enables the utilization of conventional image processing methods.
