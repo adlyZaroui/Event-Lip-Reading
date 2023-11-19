@@ -63,16 +63,17 @@ def load_data(base_path, class_folders=None):
     return dataframes
 
 
-def events_to_image(df, x_max=480, y_max=640):
+def events_to_image(df, x_max=480, y_max=640, rotate=255):
     
     '''
     
-    Converts a dataframe of events to a 2D image that is a 2D histogram of the events.
+    Converts a dataframe of events to a 2D image that is a 2D histogram of the events. rotates the image by the 255 degrees.
     
     Args:
         df (pd.DataFrame): A dataframe of events.
         x_max (int): The maximum x coordinate, defaults to 480.
         y_max (int): The maximum y coordinate, defaults to 640.
+        rotate (int): The value to rotate the image, defaults to 255.
         
     Returns:
         np.ndarray: A 2D image.
@@ -84,12 +85,15 @@ def events_to_image(df, x_max=480, y_max=640):
     # Create a 2D histogram of the event data
     hist, _, _ = np.histogram2d(df['x'], df['y'], bins=(x_max, y_max), weights=df['p'])
 
-    # Normalize the histogram to the range [0, 255]
+    # Normalize the histogram to the range [0, rotate]
     hist = 255 * (hist - np.min(hist)) / (np.max(hist) - np.min(hist))
+
+    # Rotate the image by the value of the rotate parameter
+    hist = np.rot90(hist, rotate)
 
     return hist.astype(np.uint8)
 
-def event_agg_no_polarity(x, y, p, t, T_r=100000, M=640, N=480): # Doesn't take into account polarity
+def event_agg_no_polarity(x, y, p, t, T_r=100000, M=640, N=480, rotation=255): # Doesn't take into account polarity
     
     '''
     Aggregate events into superframes.
@@ -102,6 +106,7 @@ def event_agg_no_polarity(x, y, p, t, T_r=100000, M=640, N=480): # Doesn't take 
         T_r (float): time interval of superframes, defaults to 100000.
         M (int): image length, defaults to 640.
         N (int): image width, defaults to 480.
+        rotation (int): The value to rotate the frames, defaults to 255.
         
     Returns:
         superframes (np.array): superframes
@@ -127,8 +132,8 @@ def event_agg_no_polarity(x, y, p, t, T_r=100000, M=640, N=480): # Doesn't take 
             frames_1[i] = np.bincount(N * x[idx_1] + y[idx_1], minlength = M * N).reshape(M, N)
     
     # Rotate the frames
-    frames_0 = rotate(frames_0, 225, axes=(1,2), reshape=False)
-    frames_1 = rotate(frames_1, 225, axes=(1,2), reshape=False)
+    frames_0 = rotate(frames_0, rotation, axes=(1,2), reshape=False)
+    frames_1 = rotate(frames_1, rotation, axes=(1,2), reshape=False)
     
     superframes = np.concatenate((frames_0, frames_1), axis = 0)
     print('generated superframes with size:', superframes.shape)
@@ -136,7 +141,7 @@ def event_agg_no_polarity(x, y, p, t, T_r=100000, M=640, N=480): # Doesn't take 
 
 
 
-def event_agg_polarity(x, y, p, t, T_r=100000, M=640, N=480): # Takes into account polarity
+def event_agg_polarity(x, y, p, t, T_r=100000, M=640, N=480, rotation=255): # Takes into account polarity
     
     '''
     Aggregate events into superframes.
@@ -149,6 +154,7 @@ def event_agg_polarity(x, y, p, t, T_r=100000, M=640, N=480): # Takes into accou
         T_r (float): time interval of superframes, defaults to 100000.
         M (int): image length, defaults to 640.
         N (int): image width, defaults to 480.
+        rotation (int): The value to rotate the frames, defaults to 255.
         
     Returns:
         superframes_0 (np.array): superframes for polarity 0
@@ -175,8 +181,8 @@ def event_agg_polarity(x, y, p, t, T_r=100000, M=640, N=480): # Takes into accou
             frames_1[i] = np.bincount(N * x[idx_1] + y[idx_1], minlength = M * N).reshape(M, N)
     
     # Rotate the frames
-    frames_0 = rotate(frames_0, 225, axes=(1,2), reshape=False)
-    frames_1 = rotate(frames_1, 225, axes=(1,2), reshape=False)
+    frames_0 = rotate(frames_0, rotation, axes=(1,2), reshape=False)
+    frames_1 = rotate(frames_1, rotation, axes=(1,2), reshape=False)
     
     print('generated superframes with size:', frames_0.shape, 'and', frames_1.shape)
     return frames_0, frames_1
