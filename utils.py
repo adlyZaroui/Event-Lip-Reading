@@ -6,61 +6,70 @@ This file contains utility functions for loading our data as well as utilities f
 
 
 
-def load_data(base_path, class_folders=None):
+def load_data(train_path='train10/train10/', test_path='test10/test10/'):
     
     '''
     Loads the data from the specified base path.
     
     Parameters:
-        base_path (str): The base path to the data.
-        class_folders (list): The list of class folders names to load, or None to load all.
+        train_path (str): The base path to the training data.
+        test_path (str): The base path to the testing data.
         
     Returns:
-        dataframes (list): A list of dataframes.
+        x_train (list): A list of dataframes containing the training data.
+        y_train (list): A list of labels for the training data.
     '''
     
     from tqdm import tqdm # for tracking progress
     import os
     import pandas as pd
     
-    # Initialize a list to hold dataframes
-    dataframes = []
+    class_folders = ['Addition', 'Carnaval', 'Decider', 'Ecole', 'Fillette', 'Huitre', 'Joyeux', 'Musique', 'Pyjama', 'Ruisseau']
+
+    # Initialize lists to hold dataframes and labels
+    x_train = []
+    x_test = []
 
     # Define the column names
     column_names = ['x', 'y', 'p', 't']
 
-    if class_folders:
-        # Loop over each class folder
-        for folder in tqdm(class_folders):
-            # Get the list of CSV files in this class folder
-            csv_files = os.listdir(os.path.join(base_path, folder))
-            
-            # Loop over each CSV file
-            for csv_file in csv_files:
-                # Define the full path to the CSV file
-                csv_path = os.path.join(base_path, folder, csv_file)
-                
-                # Load the CSV file into a dataframe with the specified column names and data types
-                df = pd.read_csv(csv_path, names=column_names, header=None, dtype={'x': int, 'y': int, 'p': int, 't': int}, skiprows=1)
-                
-                # Append the dataframe to the list
-                dataframes.append(df)
-    else:
-        # Get the list of CSV files in the base path
-        csv_files = os.listdir(base_path)
-
+    # Loop over each class folder
+    for folder in tqdm(class_folders):
+        # Get the list of CSV files in this class folder
+        csv_files = os.listdir(os.path.join(train_path, folder))
+        
         # Loop over each CSV file
-        for csv_file in tqdm(csv_files):
+        for csv_file in csv_files:
             # Define the full path to the CSV file
-            csv_path = os.path.join(base_path, csv_file)
+            csv_path = os.path.join(train_path, folder, csv_file)
             
             # Load the CSV file into a dataframe with the specified column names and data types
-            df = pd.read_csv(csv_path, names=column_names, header=None, dtype={'x': int, 'y': int, 'p': int, 't': int}, skiprows=1) 
+            df = pd.read_csv(csv_path, names=column_names, header=None, dtype={'x': int, 'y': int, 'p': int, 't': int}, skiprows=1)
             
             # Append the dataframe to the list
-            dataframes.append(df)
+            x_train.append(df)
+            
+    print('training data loaded')
+            
+    # Get the list of CSV files in the base path
+    csv_files = os.listdir(test_path)
+    
+    # Loop over each CSV file
+    for csv_file in csv_files:
+        # Define the full path to the CSV file
+        csv_path = os.path.join(test_path, csv_file)
+        
+        # Load the CSV file into a dataframe with the specified column names and data types
+        df = pd.read_csv(csv_path, names=column_names, header=None, dtype={'x': int, 'y': int, 'p': int, 't': int}, skiprows=1) 
+        
+        # Append the dataframe to the list
+        x_test.append(df)
+    
+    print('test data loaded')
+            
+    y_train = [i for i in range(10) for _ in range(32)]
 
-    return dataframes
+    return x_train, x_test, y_train
 
 
 def events_to_image(df, x_max=480, y_max=640, rotate=255):
