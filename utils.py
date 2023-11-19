@@ -26,6 +26,9 @@ def load_data(base_path, class_folders=None):
     # Initialize a list to hold dataframes
     dataframes = []
 
+    # Define the column names
+    column_names = ['x', 'y', 'p', 't']
+
     if class_folders:
         # Loop over each class folder
         for folder in tqdm(class_folders):
@@ -37,8 +40,8 @@ def load_data(base_path, class_folders=None):
                 # Define the full path to the CSV file
                 csv_path = os.path.join(base_path, folder, csv_file)
                 
-                # Load the CSV file into a dataframe
-                df = pd.read_csv(csv_path)
+                # Load the CSV file into a dataframe with the specified column names
+                df = pd.read_csv(csv_path, names=column_names, header=None)
                 
                 # Append the dataframe to the list
                 dataframes.append(df)
@@ -51,8 +54,8 @@ def load_data(base_path, class_folders=None):
             # Define the full path to the CSV file
             csv_path = os.path.join(base_path, csv_file)
             
-            # Load the CSV file into a dataframe
-            df = pd.read_csv(csv_path)
+            # Load the CSV file into a dataframe with the specified column names
+            df = pd.read_csv(csv_path, names=column_names, header=None)
             
             # Append the dataframe to the list
             dataframes.append(df)
@@ -60,16 +63,16 @@ def load_data(base_path, class_folders=None):
     return dataframes
 
 
-def events_to_image(df, x_max=640, y_max=480):
+def events_to_image(df, x_max=480, y_max=640):
     
     '''
     
-    Converts a dataframe of events to a 2D image taht is a 2D histogram of the events.
+    Converts a dataframe of events to a 2D image that is a 2D histogram of the events.
     
     Args:
         df (pd.DataFrame): A dataframe of events.
-        x_max (int): The maximum x coordinate, defaults to 100.
-        y_max (int): The maximum y coordinate, defaults to 100.
+        x_max (int): The maximum x coordinate, defaults to 480.
+        y_max (int): The maximum y coordinate, defaults to 640.
         
     Returns:
         np.ndarray: A 2D image.
@@ -80,7 +83,7 @@ def events_to_image(df, x_max=640, y_max=480):
     import numpy as np
     
     # Create a 2D histogram of the event data
-    hist, _, _ = np.histogram2d(df['x'], df['y'], bins=[x_max, y_max], weights=df['polarity'])
+    hist, _, _ = np.histogram2d(df['x'], df['y'], bins=(x_max, y_max), weights=df['p'])
 
     # Normalize the histogram to the range [0, 255]
     hist = 255 * (hist - np.min(hist)) / (np.max(hist) - np.min(hist))
