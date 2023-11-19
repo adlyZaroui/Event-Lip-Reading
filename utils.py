@@ -140,7 +140,6 @@ def event_agg_no_polarity(x, y, p, t, T_r=100000, M=640, N=480, rotation=255): #
     return superframes
 
 
-
 def event_agg_polarity(x, y, p, t, T_r=100000, M=640, N=480, rotation=255): # Takes into account polarity
     
     '''
