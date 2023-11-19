@@ -40,8 +40,8 @@ def load_data(base_path, class_folders=None):
                 # Define the full path to the CSV file
                 csv_path = os.path.join(base_path, folder, csv_file)
                 
-                # Load the CSV file into a dataframe with the specified column names
-                df = pd.read_csv(csv_path, names=column_names, header=None)
+                # Load the CSV file into a dataframe with the specified column names and data types
+                df = pd.read_csv(csv_path, names=column_names, header=None, dtype={'x': float, 'y': float, 'p': int, 't': int}, skiprows=1)
                 
                 # Append the dataframe to the list
                 dataframes.append(df)
@@ -54,8 +54,8 @@ def load_data(base_path, class_folders=None):
             # Define the full path to the CSV file
             csv_path = os.path.join(base_path, csv_file)
             
-            # Load the CSV file into a dataframe with the specified column names
-            df = pd.read_csv(csv_path, names=column_names, header=None)
+            # Load the CSV file into a dataframe with the specified column names and data types
+            df = pd.read_csv(csv_path, names=column_names, header=None, dtype={'x': float, 'y': float, 'p': int, 't': int}, skiprows=1) 
             
             # Append the dataframe to the list
             dataframes.append(df)
