@@ -1,4 +1,8 @@
-''' Description: Utility functions for the project. '''
+'''
+
+This file contains utility functions for loading our data as well as utilities function to handle and process event dataframes. 
+
+'''
 
 
 
