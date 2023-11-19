@@ -83,7 +83,7 @@ This folder houses another folder also titled `train10`, which in turn contains 
 
     ```
 
-Every folder within `train10/train10/` holds 32 csv files, named from `0.csv` to `31.csv`. These files represent event data focused on the face of a speaker uttering a specific word, which is also the name of the parent folder.\
+Every folder within `train10/train10/` holds 32 csv files, named from `0.csv` to `31.csv`. These files represent event data focused on the face of a speaker uttering a specific french word, which is also the name of the parent folder.\
 \
 For instance, the folder `train10/train10/Musique` contains 32 csv files, each capturing event data of someone pronouncing the French word *Musique*.
 
