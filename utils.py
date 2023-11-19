@@ -41,7 +41,7 @@ def load_data(base_path, class_folders=None):
                 csv_path = os.path.join(base_path, folder, csv_file)
                 
                 # Load the CSV file into a dataframe with the specified column names and data types
-                df = pd.read_csv(csv_path, names=column_names, header=None, dtype={'x': float, 'y': float, 'p': int, 't': int}, skiprows=1)
+                df = pd.read_csv(csv_path, names=column_names, header=None, dtype={'x': int, 'y': int, 'p': int, 't': int}, skiprows=1)
                 
                 # Append the dataframe to the list
                 dataframes.append(df)
@@ -55,7 +55,7 @@ def load_data(base_path, class_folders=None):
             csv_path = os.path.join(base_path, csv_file)
             
             # Load the CSV file into a dataframe with the specified column names and data types
-            df = pd.read_csv(csv_path, names=column_names, header=None, dtype={'x': float, 'y': float, 'p': int, 't': int}, skiprows=1) 
+            df = pd.read_csv(csv_path, names=column_names, header=None, dtype={'x': int, 'y': int, 'p': int, 't': int}, skiprows=1) 
             
             # Append the dataframe to the list
             dataframes.append(df)
@@ -79,7 +79,6 @@ def events_to_image(df, x_max=480, y_max=640):
     
     '''
     
-    from scipy.ndimage import rotate
     import numpy as np
     
     # Create a 2D histogram of the event data
@@ -87,20 +86,19 @@ def events_to_image(df, x_max=480, y_max=640):
 
     # Normalize the histogram to the range [0, 255]
     hist = 255 * (hist - np.min(hist)) / (np.max(hist) - np.min(hist))
-    
-    hist = rotate(hist, 225)
 
     return hist.astype(np.uint8)
 
-def event_agg_no_polarity(x, y, polarity, timestamp, T_r=100000, M=640, N=480): # Doesn't take into account polarity
+def event_agg_no_polarity(x, y, p, t, T_r=100000, M=640, N=480): # Doesn't take into account polarity
+    
     '''
     Aggregate events into superframes.
     
     Args:
         x (np.array): x coordinates of events
         y (np.array): y coordinates of events
-        polarity (np.array): polarity of events
-        timestamp (np.array): timestamp of events
+        p (np.array): polarity of events
+        t (np.array): timestamp of events
         T_r (float): time interval of superframes, defaults to 100000.
         M (int): image length, defaults to 640.
         N (int): image width, defaults to 480.
@@ -113,18 +111,18 @@ def event_agg_no_polarity(x, y, polarity, timestamp, T_r=100000, M=640, N=480): 
     import numpy as np
     from tqdm import tqdm
     
-    T_seq = timestamp.max()
+    T_seq = t.max()
     T_frames = int((T_seq // T_r)) + 1
     
     frames_0 = np.zeros((T_frames, M, N)) # polarity == 0
     frames_1 = np.zeros((T_frames, M, N)) # polarity == 1
     
     for i in tqdm(range(T_frames)):
-        idx_0 = np.where((timestamp >= i * T_r) & (timestamp < (i+1) * T_r) & (polarity == 0))[0]
+        idx_0 = np.where((t >= i * T_r) & (t< (i+1) * T_r) & (p == 0))[0]
         if len(idx_0) > 0:
             frames_0[i] = np.bincount(N * x[idx_0] + y[idx_0], minlength = M * N).reshape(M, N)
         
-        idx_1 = np.where((timestamp >= i * T_r) & (timestamp < (i+1) * T_r) & (polarity == 1))[0]
+        idx_1 = np.where((t >= i * T_r) & (t < (i+1) * T_r) & (p == 1))[0]
         if len(idx_1) > 0:
             frames_1[i] = np.bincount(N * x[idx_1] + y[idx_1], minlength = M * N).reshape(M, N)
     
@@ -138,15 +136,16 @@ def event_agg_no_polarity(x, y, polarity, timestamp, T_r=100000, M=640, N=480): 
 
 
 
-def event_agg_polarity(x, y, polarity, timestamp, T_r=100000, M=640, N=480): # Takes into account polarity
+def event_agg_polarity(x, y, p, t, T_r=100000, M=640, N=480): # Takes into account polarity
+    
     '''
     Aggregate events into superframes.
     
     Args:
         x (np.array): x coordinates of events
         y (np.array): y coordinates of events
-        polarity (np.array): polarity of events
-        timestamp (np.array): timestamp of events
+        p (np.array): polarity of events
+        t (np.array): timestamp of events
         T_r (float): time interval of superframes, defaults to 100000.
         M (int): image length, defaults to 640.
         N (int): image width, defaults to 480.
@@ -160,18 +159,18 @@ def event_agg_polarity(x, y, polarity, timestamp, T_r=100000, M=640, N=480): # T
     import numpy as np
     from tqdm import tqdm
     
-    T_seq = timestamp.max()
+    T_seq = t.max()
     T_frames = int((T_seq // T_r)) + 1
     
     frames_0 = np.zeros((T_frames, M, N)) # polarity == 0
     frames_1 = np.zeros((T_frames, M, N)) # polarity == 1
     
     for i in tqdm(range(T_frames)):
-        idx_0 = np.where((timestamp >= i * T_r) & (timestamp < (i+1) * T_r) & (polarity == 0))[0]
+        idx_0 = np.where((t >= i * T_r) & (t < (i+1) * T_r) & (p == 0))[0]
         if len(idx_0) > 0:
             frames_0[i] = np.bincount(N * x[idx_0] + y[idx_0], minlength = M * N).reshape(M, N)
         
-        idx_1 = np.where((timestamp >= i * T_r) & (timestamp < (i+1) * T_r) & (polarity == 1))[0]
+        idx_1 = np.where((t >= i * T_r) & (t < (i+1) * T_r) & (p == 1))[0]
         if len(idx_1) > 0:
             frames_1[i] = np.bincount(N * x[idx_1] + y[idx_1], minlength = M * N).reshape(M, N)
     
@@ -184,6 +183,7 @@ def event_agg_polarity(x, y, polarity, timestamp, T_r=100000, M=640, N=480): # T
 
     
 def decompose_events(event_df):
+    
     '''
     
     Decompose the events dataframe into tuple of individual columns x, y, polarity, and timestamp.
@@ -194,13 +194,13 @@ def decompose_events(event_df):
     Returns:
         4-tuple: x (np.array): x coordinates of events,
                  y (np.array): y coordinates of events,
-                 polarity (np.array): polarity of events,
-                 timestamp (np.array): timestamp of events  
+                 p (np.array): polarity of events,
+                 t (np.array): timestamp of events  
     '''
     
     import numpy as np
     
     return (np.array(event_df['x'].values),
             np.array(event_df['y'].values),
-            np.array(event_df['polarity'].values),
-            np.array(event_df['time'].values))
+            np.array(event_df['p'].values),
+            np.array(event_df['t'].values))
