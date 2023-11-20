@@ -101,15 +101,30 @@ Further details about the methodology employed to record this dataset can be fou
     source .venv/bin/activate
     ```
 
-5. **Notebook**: You can now execute the Notebook `temporary.ipynb` in Jupyter or watherver notebook server you prefer (vscode, google colab, ...)
+5. **Notebook**: You are now able to run the Notebooks using your preferred notebook server such as Jupyter, VSCode, Google Colab, etc.
 
 <br>
 
-## Overall
+## Project Outline
 
-The project starts with preprocessing the raw event data by converting it into pixel matrices, leveraging the inherent structure and characteristics of the data. This conversion enables the utilization of conventional image processing methods.
+### Data Exploration
 
-To handle high-dimensional data effectively, dimensionality reduction is employed using Principal Component Analysis (PCA). By reducing the dimensionality of the data while preserving relevant information, PCA allows for efficient computation and improved model performance.
+The initial phase of the project involves preprocessing the raw event data to make it suitable for visualization. This process includes transforming the data into pixel matrices, enabling the application of standard image processing techniques.
+
+Before delving into model training or selection, our focus is on analyzing trajectories. This crucial step aids in uncovering effective strategies for event data visualization and further investigating noise reduction techniques.
+
+### Data Preprocessing
+
+In the preprocessing phase, we first implement noise reduction methods to refine the event data. Following this, we use Principal Component Analysis (PCA) to efficiently manage the high-dimensional data. PCA simplifies the data's dimensionality while retaining essential information, thereby enhancing computational efficiency and improving model performance.
+
+### Model Selection and Training
+
+After preprocessing and exploring the data, the next step is model selection and training. This phase involves choosing the most suitable machine learning or deep learning models based on the problem at hand and the insights gained from the data exploration phase. Additionally, we will also take into account literature on the subject to inform our approach.
+
+
+After the model is trained, it is evaluated on a separate test set to ensure that it can generalize well to unseen data. If the model's performance on the test set is satisfactory, the model is then ready to be deployed for making predictions on new data.
+
+***
 
 The next step involves comparing the performance of a Random Forest classifier on the raw data versus the reduced data. Random Forest is a powerful ensemble learning algorithm known for its ability to handle high-dimensional data and deliver robust results. By evaluating the model performance on both versions of the data, valuable insights are gained regarding the impact of dimensionality reduction on classification accuracy.
 
